@@ -2,13 +2,15 @@ import React from 'react';
 import { useState } from 'react';
 import './App.css';
 
-import { signUp } from './services/fetch-utils';
+import { signUp, signIn } from './services/fetch-utils';
 
 export default function AuthPage({ setUser }) {
 
   const [error, setError] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [signInEmail, setSignInEmail] = useState('');
+  const [signInPassword, setSignInPassword] = useState('');
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -19,6 +21,13 @@ export default function AuthPage({ setUser }) {
     } catch (e) {
       setError(e.message);
     }
+  }
+
+  async function handleSignInSubmit(e) {
+    e.preventDefault();
+    const user = await signIn(signInEmail, signInPassword);
+
+    setUser(user);
   }
 
   return (
@@ -33,10 +42,10 @@ export default function AuthPage({ setUser }) {
         <button>Sign Up</button>
       </form>
 
-      <form>
+      <form onSubmit={handleSignInSubmit}>
         <p>Sign In</p>
-        <label>Enter Email<input></input></label>
-        <label>Enter Password<input></input></label>
+        <label>Enter Email<input onChange={e => setSignInEmail(e.target.value)} value={signInEmail} type="email"></input></label>
+        <label>Enter Password<input onChange={e => setSignInPassword(e.target.value)} value={signInPassword} type="password"></input></label>
         <button>Sign In</button>
       </form>
     </div>
