@@ -21,3 +21,8 @@ export async function signIn(email, password) {
 
   return user;
 }
+
+export async function getBooks() {
+  const { data, error } = await client.from('books').select('*');
+  return data;
+}
