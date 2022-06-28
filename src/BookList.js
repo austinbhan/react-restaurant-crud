@@ -10,13 +10,14 @@ export default function BookList() {
       const books = await getBooks();
 
       setBooks(books);
+      console.log(books);
     }
     doFetch();
   }, []);
   return (
     <div className="book-list">
       {
-        books.map((book, i) => <Book book={book} key={book.title + book.author + i}/>)
+        books.map((book, i) => <Book author={book.author} title={book.title} key={book.title + book.author + i}/>)
       }
     </div>
   );

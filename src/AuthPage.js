@@ -6,6 +6,7 @@ import { signUp, signIn } from './services/fetch-utils';
 
 export default function AuthPage({ setUser }) {
 
+
   const [error, setError] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
