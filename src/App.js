@@ -1,7 +1,7 @@
 import './App.css';
 import AuthPage from './AuthPage';
 import BookList from './BookList';
-import { Link, BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { useState } from 'react';
 import { client } from './services/client';
 

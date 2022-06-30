@@ -10,7 +10,6 @@ export default function BookList() {
       const books = await getBooks();
 
       setBooks(books);
-      console.log(books);
     }
     doFetch();
   }, []);

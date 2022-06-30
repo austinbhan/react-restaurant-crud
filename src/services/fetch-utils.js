@@ -23,6 +23,6 @@ export async function signIn(email, password) {
 }
 
 export async function getBooks() {
-  const { data, error } = await client.from('books').select('*');
+  const { data } = await client.from('books').select('*');
   return data;
 }
