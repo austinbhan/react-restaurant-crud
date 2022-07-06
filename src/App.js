@@ -1,7 +1,8 @@
 import './App.css';
 import AuthPage from './AuthPage';
 import BookList from './BookList';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import Create from './Create';
+import { BrowserRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom';
 import { useState } from 'react';
 import { logOut } from './services/fetch-utils';
 import { client } from './services/client';
@@ -20,9 +21,11 @@ function App() {
     <Router>
       <header className="header">
         <nav>
-          { user &&
+          <li>{ user &&
             <button onClick={handleLogOut}>Sign Out</button>
-          }</nav>
+          }</li>
+          <Link to="./Create">Create Book</Link>
+        </nav>
       </header>
       <div className="App">
         <Switch>
@@ -35,6 +38,9 @@ function App() {
           </Route>
           <Route exact path="/book-list">
             <BookList />
+          </Route>
+          <Route>
+            <Create exact path="/create-book"/>
           </Route>
         </Switch>
       </div>

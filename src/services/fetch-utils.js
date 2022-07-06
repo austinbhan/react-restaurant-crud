@@ -24,6 +24,7 @@ export async function signIn(email, password) {
 
 export async function logOut() {
   const { error } = await client.auth.signOut();
+  return error;
 }
 
 
