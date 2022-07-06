@@ -22,6 +22,11 @@ export async function signIn(email, password) {
   return user;
 }
 
+export async function logOut() {
+  const { error } = await client.auth.signOut();
+}
+
+
 export async function getBooks() {
   const { data } = await client.from('books').select('*');
   return data;

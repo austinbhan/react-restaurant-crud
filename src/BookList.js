@@ -1,9 +1,11 @@
 import Book from './Book';
 import { useEffect, useState } from 'react';
 import { getBooks } from './services/fetch-utils';
+import './App.css';
 
 export default function BookList() {
   const [books, setBooks] = useState([]);
+
 
   useEffect(() => {
     async function doFetch() {
@@ -13,11 +15,15 @@ export default function BookList() {
     }
     doFetch();
   }, []);
+
   return (
-    <div className="book-list">
-      {
-        books.map((book, i) => <Book author={book.author} title={book.title} key={book.title + book.author + i}/>)
-      }
-    </div>
+    <>
+      <div className="book-list">
+        <h1>Book List</h1>
+        {
+          books.map((book, i) => <Book author={book.author} title={book.title} key={book.title + book.author + i}/>)
+        }
+      </div>
+    </>
   );
 }
