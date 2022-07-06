@@ -1,10 +1,12 @@
 import React from 'react';
+import './App.css';
 
 export default function Create() {
   async function goBack() {
     window.location.replace('/');
   }
 
+  
 
   return (
     <>
