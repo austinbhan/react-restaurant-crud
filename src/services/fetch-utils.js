@@ -37,3 +37,9 @@ export async function getSingleBook(id) {
   const response = await client.from('books').select().match({ id }).single();
   return checkError(response);
 }
+
+export async function createBook(book) {
+  // eslint-disable-next-line no-unused-vars
+  const { data, error } = await client.from('books').insert(book).single();
+  return data;
+}

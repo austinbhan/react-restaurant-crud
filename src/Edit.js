@@ -16,8 +16,13 @@ export default function Edit() {
     doFetch();
   }, [params.id]);
 
+  async function goBack() {
+    window.location.replace('/');
+  }
+
   return (
     <>
+      <button onClick={goBack}>Go Back</button>
       <div className="edit-page">
         <h1>{book.title}</h1>
         <h2>{book.author}</h2>
