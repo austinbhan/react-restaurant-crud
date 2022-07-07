@@ -21,13 +21,13 @@ export default function Edit() {
   }
 
   return (
-    <>
+    <div className="edit-page">
       <button onClick={goBack}>Go Back</button>
-      <div className="edit-page">
-        <h1>{book.title}</h1>
-        <h2>{book.author}</h2>
-        <h3>{book.year}</h3>
-      </div>
-    </>
+      <form>
+        <input placeholder={book.title}></input>
+        <input placeholder={book.author}></input>
+        <input placeholder={book.year}></input>
+      </form>
+    </div>
   );
 }
