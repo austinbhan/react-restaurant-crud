@@ -1,4 +1,4 @@
-import { client } from './client';
+import { checkError, client } from './client';
 
 export async function signUp(email, password) {
   const { user, error } = await client.auth.signUp({
@@ -31,4 +31,9 @@ export async function logOut() {
 export async function getBooks() {
   const { data } = await client.from('books').select('*');
   return data;
+}
+
+export async function getSingleBook(id) {
+  const response = await client.from('books').select().match({ id }).single();
+  return checkError(response);
 }
