@@ -40,7 +40,7 @@ export async function getSingleBook(id) {
 
 export async function createBook(book) {
   // eslint-disable-next-line no-unused-vars
-  const { data, error } = await client.from('books').insert(book).single();
+  const { data } = await client.from('books').insert(book).single();
   return data;
 }
 
