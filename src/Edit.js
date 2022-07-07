@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import { getSingleBook, updateBook } from './services/fetch-utils';
+import { getSingleBook, updateBook, deleteBook } from './services/fetch-utils';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -10,15 +10,15 @@ export default function Edit() {
   const [author, setAuthor] = useState('');
   const [year, setYear] = useState('');
 
-  const params = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     async function doFetch() {
-      const data = await getSingleBook(params.id);
+      const data = await getSingleBook(id);
       setBook(data);
     }
     doFetch();
-  }, [params.id]);
+  }, [id]);
 
   async function goBack() {
     window.location.replace('/');
@@ -30,11 +30,11 @@ export default function Edit() {
       title: title,
       author: author,
       year: year
-    }, [params.id]);
+    }, [id]);
   }
 
-  async function handleDelete(e) {
-    e.preventDefault();
+  async function handleDelete() {
+    await deleteBook([id]);
   }
 
   return (
@@ -47,7 +47,7 @@ export default function Edit() {
         <input onChange={e => setYear(e.target.value)} value={year} placeholder={book.year}></input>
         <button>Update Book</button>
       </form>
-      <button onSubmit={handleDelete}>Delete Book</button>
+      <button onClick={handleDelete}>Delete Book</button>
     </div>
   );
 }
