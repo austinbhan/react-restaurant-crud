@@ -1,7 +1,8 @@
 import './App.css';
 import AuthPage from './AuthPage';
 import BookList from './BookList';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import Create from './Create';
+import { BrowserRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom';
 import { useState } from 'react';
 import { logOut } from './services/fetch-utils';
 import { client } from './services/client';
@@ -24,10 +25,10 @@ function App() {
           { user &&
             <button onClick={handleLogOut}>Sign Out</button>
           }
+          <Link to="/create-book">Add a Book</Link>
         </nav>
       </header>
       <div className="App">
-        
         <Route exact path="/">
           {
             !user // if user doesn't exist
@@ -36,12 +37,19 @@ function App() {
           }
         </Route>
         <Switch>
-          <Route exact path="/book-list">
+          <Route exact path="/book-list"> 
+            {/* Books List  */}
             <BookList />
           </Route>
+          <Route exact path="/create-book">
+            {/* Add an Entry  */}
+            <Create />
+          </Route>
           <Route exact path='/books/:id'>
+            {/* Edit Books  */}
             <Edit />
           </Route>
+          
         </Switch>
       </div>
 
