@@ -43,3 +43,8 @@ export async function createBook(book) {
   const { data, error } = await client.from('books').insert(book).single();
   return data;
 }
+
+export async function updateBook(book, id) {
+  const { data } = await client.from('books').update(book).match({ id: id }).single();
+  return data;
+}

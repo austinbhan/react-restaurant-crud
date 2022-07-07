@@ -21,7 +21,7 @@ export default function BookList() {
       <div className="book-list">
         <h1>Book List</h1>
         {
-          books.map((book, i) => <Book author={book.author} title={book.title} id={book.id} key={book.title + book.author + book.id + i}/>)
+          books.map((book, i) => <Book author={book.author} title={book.title} id={book.id} year={book.year} key={book.title + book.author + book.id + i}/>)
         }
       </div>
     </>
